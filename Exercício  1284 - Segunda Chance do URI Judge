@@ -1,0 +1,107 @@
+#Em uma faculdade de um mundo muito distante, dois jovens professores buscam ajudar seus alunos a estudarem e melhorarem seus conhecimentos sobre a disciplina de 
+programação, fazendo com que notas mais altas sejam conquistadas. Para isso, desenvolveram a estratégia da "Segunda Chance".
+A estratégia da "Segunda Chance" consiste em criar uma nova atividade com os mesmos problemas da atividade original, porém com um prazo estendido e com a 
+disponibilização de vídeos detalhados com a resolução de cada problema da atividade, de modo a incentivar que os alunos revisitem e comparem suas próprias
+propostas de solução.
+Para aumentar ainda mais o incentivo para a turma, os professores concedem um bônus de dois pontos sobre a nota original para aqueles que resolverem TODOS os 
+problemas dentro do prazo estendido, isto é, que obtiverem dez na nova atividade, o que é uma "moleza", considerando que basta assistir as resoluções e aplicá-las.
+Mas é claro, o bônus é concedido até o limite de dez pontos, ou seja, caso a soma do bônus com a nota original resulte em um valor superior a dez, a nota final será dez.
+Como esperado, os alunos ficaram contentes e empolgados com a oportunidade. De tão agradecidos, ofereceram um software aos dois professores, de modo a reduzir um pouco 
+
+da carga extra de trabalho que eles terão para recalcular as notas.
+Você se voluntariou para implementar esse software, que precisa receber um valor inicial indicando a quantidade de alunos da turma, seguido pelas notas originais de
+cada aluno e pelas notas obtidas na nova atividade. O programa deverá exibir a quantidade de alunos que tiveram suas notas alteradas, assim como as notas originais 
+e finais de cada aluno, destacando aqueles que aumentaram as notas.
+
+Entrada
+
+Na primeira linha haverá um número natural N (1 <= N <= 999) indicando a quantidade de alunos da turma;
+Nas próximas N linhas, haverá a nota original de cada aluno, que são valores reais no intervalo fechado [ 0,10 ];
+E, por fim, nas N linhas seguintes, haverá a nota obtida na nova atividade, também situadas no intervalo fechado [ 0,10 ].
+
+Saída
+
+A primeira linha será a frase 'NOTAS ALTERADAS: <quantidade>', sem apóstrofos e completamente em maiúsculo, em que <quantidade> deve ser substituído pela 
+quantidade de alunos que tiveram suas notas originais alteradas em decorrência da aplicação do bônus;
+As próximas N linhas serão as notas de todos os alunos, na mesma ordem dada na entrada, iniciando com asterisco ('*') para indicar as notas que foram alteradas
+e hífen ('-') para indicar aquelas que não foram, seguido pela posição da referida nota entre parênteses. O formato de cada linha pode ser observada nos exemplos,
+onde se destacam três características: (a) a posição tem sempre três dígitos, completada com zeros à esquerda quando necessário; (b) todas as notas são exibidas 
+com duas casas decimais e; (c) todas as notas ocupam cinco colunas (o que inclui o caractere de ponto), completadas com zeros à esquerda quando necessário.
+
+
+Samples Input                                                             	Samples Output
+
+5                                                                               NOTAS ALTERADAS: 0                                                          
+10.00                                                                           -(001) original: 10.00 | final: 10.00
+10.00                                                                           -(002) original: 10.00 | final: 10.0
+10.00                                                                           -(003) original: 10.00 | final: 10.00
+10.00                                                                           -(004) original: 10.00 | final: 10.00
+10.00                                                                           -(005) original: 10.00 | final: 10.00
+0.00
+0.00
+0.00
+0.00
+0.00
+
+
+5                                                                                NOTAS ALTERADAS: 4
+7.00                                                                             *(001) original: 07.00 | final: 09.00
+6.00                                                                             *(002) original: 06.00 | final: 08.00
+10.00                                                                            -(003) original: 10.00 | final: 10.00
+1.00                                                                             *(004) original: 01.00 | final: 03.00
+9.00                                                                             *(005) original: 09.00 | final: 10.00
+10.00
+10.00
+10.00
+10.00
+10.00
+
+
+5                                                                             NOTAS ALTERADAS: 1
+7.00                                                                          -(001) original: 07.00 | final: 07.00
+6.00                                                                          -(002) original: 06.00 | final: 06.00
+10.00                                                                         -(003) original: 10.00 | final: 10.00
+1.00                                                                          -(004) original: 01.00 | final: 01.00
+9.00                                                                          *(005) original: 09.00 | final: 10.00
+8.00
+9.00
+7.00
+5.00
+10.00
+
+
+--------------------------------- Resolução em Python -------------------------------------------
+
+lista1 = []
+lista2 = []
+alt = 0
+
+alunos = int(input())
+
+for i in range(0, alunos):
+    entrada= float(input())
+    lista1.append(entrada)
+    
+for i in range (0, alunos):
+    entrada = float(input())
+    lista2.append(entrada)
+    
+for i in range(0, alunos):
+    if lista2[i]==10:
+        if lista1[i]!=10:
+            alt+=1
+c=1
+
+print(f'NOTAS ALTERADAS: {alt}')
+for i in range(alunos):
+    aluno=('({:0>3})'.format(c))
+    if lista2[i]==10 and lista1[i] < 10:
+        if lista1[i] + 2 <= 10:
+            notaFinal = lista1[i] + 2
+            print(f'*(00{i + 1}) original: {lista1[i]:0>5.2f} | final: {notaFinal:0>5.2f}')
+        else:
+            notaFinal = 10
+            print(f'*(00{i + 1}) original: {lista1[i]:0>5.2f} | final: {notaFinal:0>5.2f}')
+    else:
+        print(f'-(00{i + 1}) original: {lista1[i]:0>5.2f} | final: {lista1[i]:0>5.2f}')
+c+=1

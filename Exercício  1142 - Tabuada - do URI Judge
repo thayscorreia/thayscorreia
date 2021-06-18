@@ -1,0 +1,53 @@
+#Sua tarefa é construir um programa que receba como entrada um número natural N (0 <= N <= 10) e exibir a tabuada de N de 1 até 10.
+
+Entrada
+Um número natural N (0 <= N <= 10).
+
+Saída
+Exibir a tabuada do valor dado na entrada, conforme o modelo de saída dos exemplos.
+
+
+Samples Input                                        	Samples Output   
+
+
+2                                                     2 x 1 = 2
+                                                      2 x 2 = 4
+                                                      2 x 3 = 6
+                                                      2 x 4 = 8
+                                                      2 x 5 = 10
+                                                      2 x 6 = 12
+                                                      2 x 7 = 14
+                                                      2 x 8 = 16
+                                                      2 x 9 = 18
+                                                      2 x 10 = 20
+5                                                      
+                                                      5 x 1 = 5
+                                                      5 x 2 = 10
+                                                      5 x 3 = 15
+                                                      5 x 4 = 20
+                                                      5 x 5 = 25
+                                                      5 x 6 = 30
+                                                      5 x 7 = 35
+                                                      5 x 8 = 40
+                                                      5 x 9 = 45
+                                                      5 x 10 = 50
+                                                      
+10                                                    10 x 1 = 10
+                                                      10 x 2 = 20
+                                                      10 x 3 = 30
+                                                      10 x 4 = 40
+                                                      10 x 5 = 50
+                                                      10 x 6 = 60
+                                                      10 x 7 = 70
+                                                      10 x 8 = 80
+                                                      10 x 9 = 90
+                                                      10 x 10 = 100
+                                                      
+                                                      
+--------------------------------- Resolução em Python -------------------------------------------
+
+tabuada = int(input())
+n =1
+while n <= 10:
+    print(tabuada, 'x',n,'=',tabuada*n)
+    n = n + 1
